@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Sistema de Cadastro</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h2> QRcode</h2>
+
+    <ion-row text-center>
+        <ion-col>
+            <div><button ion-button (click)="Encode()">Gerar QRcode</button></div>
+        </ion-col>
+        <ion-col>
+            <div><button ion-button (click)="Scan()">Scan QRcode</button></div>
+        </ion-col>
+    </ion-row>
+
+    <br>
+    <div *ngIf="dadosLidos">
+        <p>Código escaneado: {{codigo}}</p>
+        <p>Formato do código: {{formato}} </p>
+    </div>
+    <br><br><br>
+
+    <h1>Cadastro de Alunos</h1>
+
+    <form (ngSubmit)="logForm()">
+        <ion-item>
+            <ion-label>Nome</ion-label>
+            <ion-input type="text" [(ngModel)]="todo.nome" name="nome"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Email</ion-label>
+            <ion-input type="text" [(ngModel)]="todo.email" name="email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Telefone</ion-label>
+            <ion-input type="text" [(ngModel)]="todo.telefone" name="telefone"></ion-input>
+        </ion-item>
+        <ion-input type="hidden" [(ngModel)]="todo.qrcode" name="qrcode" value="{{codigo}}"></ion-input>
+        <button ion-button type="submit" block>Cadastrar</button>
+    </form>
+    <div *ngIf="retorno">
+        <p>{{retorno}}</p>
+    </div>
+
+
+</ion-content>
