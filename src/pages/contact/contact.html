@@ -1,17 +1,35 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-row>
+            <ion-col col-2>
+                <ion-avatar>
+                    <img src="https://professores.escolamaisfacil.com.br/assets/dist/img/cadeado.png" width="35px">
+                </ion-avatar>
+            </ion-col>
+            <ion-col col-10 text-center>
+                <ion-title>Lista de Cadastros</ion-title>
+            </ion-col>
+        </ion-row>
+    </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            <h2>Cadastros dos objetos do CAP</h2>
+        </ion-list-header>
+
+        <ion-item *ngFor="let itens of listagem">
+            <ion-avatar item-start>
+                <img src="https://professores.escolamaisfacil.com.br/assets/dist/img/cadeado.png">
+            </ion-avatar>
+            <ion-label>
+                <h2>{{itens.nome}}</h2>
+                <h3>{{itens.local}}</h3>
+                <p>{{itens.qrcode}}</p>
+            </ion-label>
+        </ion-item>
+
+    </ion-list>
 </ion-content>

@@ -1,6 +1,15 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>Sistema de Cadastro</ion-title>
+        <ion-row>
+            <ion-col col-2>
+                <ion-avatar>
+                    <img src="https://professores.escolamaisfacil.com.br/assets/dist/img/cadeado.png" width="35px">
+                </ion-avatar>
+            </ion-col>
+            <ion-col col-10 text-center>
+                <ion-title>Sistema de Cadastro</ion-title>
+            </ion-col>
+        </ion-row>
     </ion-navbar>
 </ion-header>
 
@@ -16,14 +25,13 @@
         </ion-col>
     </ion-row>
 
-    <br>
     <div *ngIf="dadosLidos">
         <p>Código escaneado: {{codigo}}</p>
         <p>Formato do código: {{formato}} </p>
     </div>
     <br><br><br>
 
-    <h1>Cadastro de Alunos</h1>
+    <h1>Cadastro de Objetos</h1>
 
     <form (ngSubmit)="logForm()">
         <ion-item>
@@ -31,14 +39,15 @@
             <ion-input type="text" [(ngModel)]="todo.nome" name="nome"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>Email</ion-label>
-            <ion-input type="text" [(ngModel)]="todo.email" name="email"></ion-input>
+            <ion-label>Local</ion-label>
+            <ion-input type="text" [(ngModel)]="todo.local" name="local"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label>Telefone</ion-label>
-            <ion-input type="text" [(ngModel)]="todo.telefone" name="telefone"></ion-input>
+            <ion-label>QrCode</ion-label>
+            <ion-input type="text" [(ngModel)]="todo.qrcode" name="qrcode" value="{{codigo}}"></ion-input>
         </ion-item>
-        <ion-input type="hidden" [(ngModel)]="todo.qrcode" name="qrcode" value="{{codigo}}"></ion-input>
+
+
         <button ion-button type="submit" block>Cadastrar</button>
     </form>
     <div *ngIf="retorno">

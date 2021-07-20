@@ -1,8 +1,11 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { HttpClient } from '@angular/common/http';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { LoadingController } from 'ionic-angular';
+import { ContactPage } from '../contact/contact';
+
 
 @Component({
   selector: 'page-home',
@@ -17,10 +20,12 @@ export class HomePage {
   public retorno: any;
   todo = {}
 
+
   constructor(
     public navCtrl: NavController,
     private barcode: BarcodeScanner,
-    public http: HttpClient
+    public http: HttpClient,
+    public loadingController: LoadingController
     ) {
 
   }
@@ -30,10 +35,12 @@ export class HomePage {
     // retorna o que vem do formulário
     console.log(this.todo)
     this.http.post("http://localhost/cadastros/cadastros.php", this.todo)
+
     .subscribe(data => {
       //console.log(data['message']);
       if(data['message'] == 1){
         this.retorno = "Tudo Certinho!";
+        this.navCtrl.push(ContactPage);
       }else{
         this.retorno = "Tente Novamente!";
       }
